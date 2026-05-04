@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Product Management Admin Panel</title>
+  <!-- Tailwind CSS with plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Material Symbols -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Theme Configuration -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec5b",
+            "background-light": "#f6f8f6",
+            "background-dark": "#102216",
+          },
+          fontFamily: {
+            "display": ["Work Sans"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    body {
+      font-family: "Work Sans", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d1b12] dark:text-white transition-colors duration-200">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside
+      class="w-64 border-r border-[#cfe7d7] dark:border-[#1a3d24] bg-white dark:bg-background-dark flex flex-col justify-between p-6">
+      <div class="flex flex-col gap-8">
+        <!-- Brand -->
+        <div class="flex items-center gap-3">
+          <div class="bg-primary size-10 rounded-lg flex items-center justify-center text-white">
+            <span class="material-symbols-outlined">nutrition</span>
+          </div>
+          <div class="flex flex-col">
+            <h1 class="text-lg font-bold leading-tight">JuiceAdmin</h1>
+            <p class="text-xs text-[#4c9a66]">Product Management</p>
+          </div>
+        </div>
+        <!-- Navigation -->
+        <nav class="flex flex-col gap-2">
+         
+          <a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg bg-primary/10 text-[#0d1b12] dark:text-primary dark:bg-primary/20"
+            href="#">
+            <span class="material-symbols-outlined fill-1">inventory_2</span>
+            Productos
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg hover:bg-background-light dark:hover:bg-[#1a3d24] transition-colors"
+            href="#">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            Orden
+          </a>
+        </nav>
+      </div>
+      <!-- Profile / Bottom -->
+      <div class="pt-6 border-t border-[#cfe7d7] dark:border-[#1a3d24]">
+        <div class="flex items-center gap-3">
+          <div class="size-8 rounded-full bg-cover bg-center" data-alt="Profile picture of the administrator"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUbNRr5sbdPYkqM0LwHbyFI9khHSpVwX_2pI_hjp6x6ESyoHmuU31Aq6iuLBxhs7ho04gHq71ptALe2cqtn-y_j8eMvOk2TJAyFPb9d9pOiuw11UZemaT7pe8Fz0fYxff0-tzdRJdUtIEqwZPk46BBb03DfD1fe71zhMbDinGL0pVb4PTN4d0HbJ31_Yy3lA4HmpiQq7BjZmoCLnouu9R-6AWPBp2jXfRg7hwdiUKk8UnvbATxWfs334Ye4sQb-NMSLak7j3bdHYbr')">
+          </div>
+          <div class="flex flex-col">
+            <p class="text-sm font-bold">Alex Rivera</p>
+            <p class="text-[10px] text-[#4c9a66]">Store Manager</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto px-8 py-10 bg-background-light dark:bg-background-dark">
+      <div class="max-w-6xl mx-auto space-y-6">
+        <!-- Page Header -->
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-3xl font-black tracking-tight">Product Management</h2>
+            <p class="text-[#4c9a66] mt-1">Manage your inventory, prices, and product visibility.</p>
+          </div>
+          <button
+            class="bg-primary hover:bg-primary/90 text-black font-bold py-2.5 px-6 rounded-lg transition-all flex items-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined">add</span>
+            Add New Product
+          </button>
+        </div>
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div
+            class="bg-white dark:bg-background-dark/50 border border-[#cfe7d7] dark:border-[#1a3d24] rounded-xl p-6 flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-medium text-[#4c9a66]">Total Products</p>
+              <span class="material-symbols-outlined text-primary">inventory</span>
+            </div>
+            <p class="text-3xl font-black">124</p>
+            <p class="text-xs text-green-600 font-bold flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs">trending_up</span> +5% from last month
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-background-dark/50 border border-[#cfe7d7] dark:border-[#1a3d24] rounded-xl p-6 flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-medium text-[#4c9a66]">Out of Stock</p>
+              <span class="material-symbols-outlined text-orange-500">warning</span>
+            </div>
+            <p class="text-3xl font-black">8</p>
+            <p class="text-xs text-red-500 font-bold flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs">priority_high</span> 2 critical alerts
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-background-dark/50 border border-[#cfe7d7] dark:border-[#1a3d24] rounded-xl p-6 flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-medium text-[#4c9a66]">Active Sales</p>
+              <span class="material-symbols-outlined text-blue-500">payments</span>
+            </div>
+            <p class="text-3xl font-black">42</p>
+            <p class="text-xs text-primary font-bold flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs">check_circle</span> Campaign live
+            </p>
+          </div>
+        </div>
+        <!-- Search and Filter Bar -->
+        <div class="flex gap-4">
+          <div class="flex-1 relative">
+            <span
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#4c9a66]">search</span>
+            <input
+              class="w-full pl-12 pr-4 py-3 bg-white dark:bg-[#1a3d24]/30 border border-[#cfe7d7] dark:border-[#1a3d24] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-[#4c9a66]/60"
+              placeholder="Search juices, categories, or SKUs..." type="text" />
+          </div>
+          <button
+            class="px-4 border border-[#cfe7d7] dark:border-[#1a3d24] rounded-lg bg-white dark:bg-[#1a3d24]/30 flex items-center gap-2 hover:bg-background-light dark:hover:bg-[#1a3d24] transition-all">
+            <span class="material-symbols-outlined">filter_list</span>
+            Filter
+          </button>
+        </div>
+        <!-- Product Table -->
+        <div
+          class="bg-white dark:bg-background-dark/50 border border-[#cfe7d7] dark:border-[#1a3d24] rounded-xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead
+                class="bg-background-light dark:bg-[#1a3d24]/50 text-sm font-bold uppercase tracking-wider text-[#4c9a66]">
+                <tr>
+                  <th class="px-6 py-4 w-20 text-center">Imagen</th>
+                  <th class="px-6 py-4 min-w-[200px]">jugo</th>
+                  <th class="px-6 py-4">Categoria</th>
+                  <th class="px-6 py-4">Precio</th>
+                  <th class="px-6 py-4">Disponiblilidad</th>
+                  <th class="px-6 py-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#cfe7d7] dark:divide-[#1a3d24]">
+                <!-- Row 1 -->
+                <tr class="hover:bg-background-light/50 dark:hover:bg-[#1a3d24]/20 transition-colors">
+                  <td class="px-6 py-4">
+                    <div class="size-12 rounded-lg bg-cover bg-center mx-auto"
+                      data-alt="Bottle of cold-pressed green kale juice"
+                      style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDbkYee_AslJBE7ol81q6ZcrV8aPEnDybXuWrNOujW63ih51nbsDNw6s6eLNGKza8uDoPGgY7LnPydmkzsk40jEfBqG1vrtfZjaMha8opveMH5b6oBPLU3-iaqDOT-BVKccMjzt1YCrreDlD-SqablBFiBKCMDJOW687JbVWXAq5fqyMsXZLomlh9458WP2yWKQwI_7QGBNUcnCc3EQ73R2D5IbU-AtxZVLdyzMBYKAdGmMjP6QMHSq2rdxsO6pjm3OxpPGE2lr05dg')">
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-bold">Cold-Pressed Kale</td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300 rounded-full text-xs font-bold">Detox</span>
+                  </td>
+                  <td class="px-6 py-4 font-medium text-primary">$8.50</td>
+                  <td class="px-6 py-4">
+                    <span class="flex items-center gap-1.5 text-sm text-green-600 font-bold">
+                      <span class="size-2 rounded-full bg-green-500"></span> In Stock
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-right space-x-2">
+                    <button class="p-2 hover:bg-primary/20 rounded-lg text-primary transition-colors">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button
+                      class="p-2 hover:bg-red-100 dark:hover:bg-red-900/20 rounded-lg text-red-500 transition-colors">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr class="hover:bg-background-light/50 dark:hover:bg-[#1a3d24]/20 transition-colors">
+                  <td class="px-6 py-4">
+                    <div class="size-12 rounded-lg bg-cover bg-center mx-auto"
+                      data-alt="Fresh vibrant orange juice in a glass bottle"
+                      style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7N3TeP9HcjiVFf_thZHz7wxXVQ_4ohaDwoyc9pzfGaFTY5gnKZWuWKbSEdukexvFsRFF5L5BaIxhjVCniVjH7Y9akhdQYCXlisL93oCd3d4-hzeR_Z0nn0xeMaRzQCgPVKxKV6w4z-BzVqIAoPIsBvufGPqVBUKS5nmjz-RVUAtB8txj6xipy6X9c-IaJTQ1TRpDVrvgziw6AuM8tdyhP_602uJzuyhRQ3AK3bASIuXDdm547fjVq_LQkk28BlxxuuXScLT81d1f6')">
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-bold">Zesty Orange</td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="px-3 py-1 bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300 rounded-full text-xs font-bold">Citrus</span>
+                  </td>
+                  <td class="px-6 py-4 font-medium text-primary">$7.00</td>
+                  <td class="px-6 py-4">
+                    <span class="flex items-center gap-1.5 text-sm text-green-600 font-bold">
+                      <span class="size-2 rounded-full bg-green-500"></span> In Stock
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-right space-x-2">
+                    <button class="p-2 hover:bg-primary/20 rounded-lg text-primary transition-colors">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button
+                      class="p-2 hover:bg-red-100 dark:hover:bg-red-900/20 rounded-lg text-red-500 transition-colors">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr class="hover:bg-background-light/50 dark:hover:bg-[#1a3d24]/20 transition-colors">
+                  <td class="px-6 py-4">
+                    <div class="size-12 rounded-lg bg-cover bg-center mx-auto"
+                      data-alt="Small concentrated ginger immunity shot bottle"
+                      style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcsXQwGL-N0bv3AOjY6BsyHjCQGTmLlKW2V-1l39K1YSGMZHjpoHUc7AgDKiiD2JCeivA37gww3TCafnzHjfOgOUyat3lSYia7XOdsY0_dHcKzXdOtsxR0_Iqnx50OQGxk496WUOU6ELer8IUqrzqpKfdXGQEa4MVzehMD9lgRD-usKZ9_MZ0LTvltb-ui7bryxsyC2gKWeytZBLWROmXgkW7XN3CJiDbKsq0WJY5XVy4lfCkdp9LotPMae0LgQlXtAxFjDBZdo6o2')">
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-bold">Ginger Immunity Shot</td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="px-3 py-1 bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300 rounded-full text-xs font-bold">Energy</span>
+                  </td>
+                  <td class="px-6 py-4 font-medium text-primary">$4.50</td>
+                  <td class="px-6 py-4">
+                    <span class="flex items-center gap-1.5 text-sm text-orange-500 font-bold">
+                      <span class="size-2 rounded-full bg-orange-500 animate-pulse"></span> Low Stock
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-right space-x-2">
+                    <button class="p-2 hover:bg-primary/20 rounded-lg text-primary transition-colors">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button
+                      class="p-2 hover:bg-red-100 dark:hover:bg-red-900/20 rounded-lg text-red-500 transition-colors">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr class="hover:bg-background-light/50 dark:hover:bg-[#1a3d24]/20 transition-colors">
+                  <td class="px-6 py-4">
+                    <div class="size-12 rounded-lg bg-cover bg-center mx-auto"
+                      data-alt="Mixed berry smoothie in a clear bottle"
+                      style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdRO0mjq-THWavdrACzPAmW0vSpr6x6BNtLiozEfMPN9PJDWOcojNg22AyOCX6c368P0BDUUgO0dSYxAX6e2VLMqer9C8KGpFd_rVnzMXYClVWtZqdLd9pINxdzptAXPNNmouT-749FsWB_hTq8Agf1SLiOVvl7rYE9tfM839xzdIP76wdEkyQZ429UqlRfhHXI5ehpHDlRf6JzM5yoa7pQIlcRDHvXTmI-zzfsIKyZc_j485Wi6JwQWMKLQteZ_isxqjUvbEu17gL')">
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 font-bold">Mixed Berry Blast</td>
+                  <td class="px-6 py-4">
+                    <span
+                      class="px-3 py-1 bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 rounded-full text-xs font-bold">Detox</span>
+                  </td>
+                  <td class="px-6 py-4 font-medium text-primary">$9.00</td>
+                  <td class="px-6 py-4">
+                    <span class="flex items-center gap-1.5 text-sm text-red-500 font-bold">
+                      <span class="size-2 rounded-full bg-red-500"></span> Out of Stock
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-right space-x-2">
+                    <button class="p-2 hover:bg-primary/20 rounded-lg text-primary transition-colors">
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button
+                      class="p-2 hover:bg-red-100 dark:hover:bg-red-900/20 rounded-lg text-red-500 transition-colors">
+                      <span class="material-symbols-outlined">delete</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+           <!-- Footer -->
+           <footer class="bg-[#e7f3eb] dark:bg-black/20 py-12 px-10">
+            <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+          
+              <!-- Marca -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-2 text-[#0d1b12] dark:text-white">
+                  <span class="material-symbols-outlined text-primary">local_drink</span>
+                  <h2 class="text-lg font-bold">BubbleJuice</h2>
+                </div>
+                <p class="text-sm text-[#4c9a66] dark:text-gray-400">
+                  Donde los jugos naturales se encuentran con la magia del bubble tea✨.
+                </p>
+              </div>
+          
+              <!-- Sabores -->
+              <div>
+                <h4 class="font-bold mb-4 dark:text-white">Nuestros Sabores</h4>
+                <ul class="text-sm text-[#4c9a66] dark:text-gray-400 flex flex-col gap-2">
+                  <li><a class="hover:text-primary" href="#">Fresa Explosion</a></li>
+                  <li><a class="hover:text-primary" href="#">Mango Tropical</a></li>
+                  <li><a class="hover:text-primary" href="#">Matcha Bubble</a></li>
+                </ul>
+              </div>
+          
+              <!-- Experiencia -->
+              <div>
+                <h4 class="font-bold mb-4 dark:text-white">La Experiencia</h4>
+                <ul class="text-sm text-[#4c9a66] dark:text-gray-400 flex flex-col gap-2">
+                  <li><a class="hover:text-primary" href="#">Nuestra Máquina</a></li>
+                  <li><a class="hover:text-primary" href="#">Cómo Funciona</a></li>
+                  <li><a class="hover:text-primary" href="#">Ediciones Especiales</a></li>
+                </ul>
+              </div>
+          
+              <!-- Extra creativo (sin email) -->
+              <div>
+                <h4 class="font-bold mb-4 dark:text-white">Tip del Día 🧃</h4>
+                <p class="text-sm text-[#4c9a66] dark:text-gray-400">
+                  Mezcla mango + maracuyá + perlas de fresa para un combo explosivo 💥
+                </p>
+                <div class="mt-3">
+                  <button class="bg-primary text-black font-bold px-4 py-2 rounded-lg text-sm">
+                    Probar combinación
+                  </button>
+                </div>
+              </div>
+          
+            </div>
+          
+            <!-- Línea final -->
+            <div class="mt-10 text-center text-xs text-[#4c9a66] dark:text-gray-400">
+               Diseñado con amor, frutas y muchas burbujas
+            </div>
+          </footer>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
